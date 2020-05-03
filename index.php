@@ -21,9 +21,7 @@ $photo = new Photos;
    <script src="lightbox/dist/js/lightbox.js"></script>
 </head>
 <body>
-
    <div class="container">
-
    <?php
    if (empty($_GET['page'])) {
       include 'main.php';
@@ -31,16 +29,13 @@ $photo = new Photos;
       include $_GET['page'] . '.php';
    }
    ?>
-
-   </div>
-   
+   </div>   
    <script>
     lightbox.option({
       'resizeDuration': 500,
       'wrapAround': true,
       'showImageNumberLabel': false
     });
-</script>
-
+   </script>
 </body>
 </html>
