@@ -1,0 +1,134 @@
+body, html {
+   min-height: 100%;
+   padding: 0;
+   margin: 0;
+   background: linear-gradient(to bottom right, black , #222, black 75%) no-repeat fixed;
+   color: orangered;
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+   font-size: 16px;
+}
+
+h1 {
+   padding: 30px;
+   text-align: center;
+}
+
+.container {
+   width: 90%;
+   margin: auto;
+}
+
+input, button, textarea {
+   font-size: 16px;
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+button.add {
+   background: none;
+   border: 2px solid orangered;
+   border-radius: 10px;
+   padding: 8px 15px;
+   margin-right: 16px;
+   margin-top: 20px;
+   color: orangered;
+   cursor: pointer;
+   transition-duration: 0.2s;
+}
+
+button.add:hover {
+   box-shadow: 0 0 13px white;
+   color: white;
+}
+
+input.add {
+   width: 500px;
+   background: none;
+   border: 2px solid orangered;
+   border-radius: 10px;
+   padding: 8px 15px;
+   margin-right: 16px;
+   color: white;
+   margin-top: 20px;
+}
+
+input:focus, button:focus {
+   outline: none;
+   box-shadow: 0 0 13px white;
+}
+
+a:focus {
+   outline: none;
+}
+
+a {
+   text-decoration: none;
+}
+
+fieldset {
+   margin: 30px auto 0 auto;
+   width: 100%;
+   border: 2px solid white;
+   border-radius: 10px;
+   padding: 20px;
+}
+
+legend {
+   color: white;
+}
+
+textarea.add {
+   width: 500px;
+   background: none;
+   border: 2px solid orangered;
+   border-radius: 10px;
+   padding: 8px 15px;
+   margin-right: 16px;
+   color: white;
+   margin-top: 20px;
+}
+
+textarea:focus {
+   outline: none;
+   box-shadow: 0 0 13px white;
+}
+
+.green {
+   width: 100%;
+   background-color: green;
+   font-weight: 800;
+   color: white;
+   padding: 15px;
+   text-align: center;
+}
+
+.red {
+   width: 100%;
+   background-color: orangered;
+   font-weight: 800;
+   color: white;
+   padding: 15px;
+   text-align: center;
+}
+
+
+.wrapper {
+   margin: 50px auto;
+   display: flex;
+   flex-wrap: wrap;
+   max-width: 100%;
+   align-content: flex-start;
+}
+
+img {
+   border: 2px solid orangered;
+   max-height: 150px;
+   max-width: 225px;
+   object-fit: cover;
+   flex-grow: 1;
+   transition-duration: 0.5s;
+}
+
+img:hover {
+   transform: scale(1.05);
+   border-color:white;   
+}
