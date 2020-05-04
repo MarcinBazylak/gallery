@@ -9,7 +9,7 @@ class Photos {
 
       global $mysqli;
 
-      $result = $mysqli->query("SELECT * FROM photos ORDER BY id DESC");
+      $result = $mysqli->query("SELECT * FROM photos ORDER BY RAND()");
       return $result;
 
    }
@@ -30,19 +30,16 @@ class Photos {
 
    }
 
-   public function addPhoto($photo, $data) {
+   public function addPhoto($photo) {
 
       global $mysqli;
-      
-      $data = array_map('utf8_decode', $data);
-      
 
       if ($this->validateForm($photo)) {
 
          $title = htmlspecialchars($data['title']);
          $desc = htmlspecialchars($data['desc']);
          $date = date("d.m.Y");
-         $mysqli->query("INSERT INTO photos VALUES ('', '$date', '$title', '$desc')");
+         $mysqli->query("INSERT INTO photos VALUES ('', '$date')");
 
          $result = $mysqli->query("SELECT id FROM photos ORDER BY id DESC LIMIT 0,1");
          $row = $result->fetch_array(MYSQLI_ASSOC);
