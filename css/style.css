@@ -135,7 +135,7 @@ img.delete {
 
 img:hover {
    transform: scale(1.05);
-   border-color:green;   
+   border-color:green;
 }
 
 img.delete:hover {

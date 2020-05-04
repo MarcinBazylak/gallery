@@ -9,7 +9,7 @@ class Photos {
 
       global $mysqli;
 
-      $result = $mysqli->query("SELECT * FROM photos ORDER BY RAND()");
+      $result = $mysqli->query("SELECT * FROM photos ORDER BY id DESC");
       return $result;
 
    }
@@ -30,27 +30,46 @@ class Photos {
 
    }
 
-   public function addPhoto($photo) {
+   public function addPhoto($photos) {
 
       global $mysqli;
+      $j = 0;
 
-      if ($this->validateForm($photo)) {
+      foreach($photos as $photo) {
 
-         $title = htmlspecialchars($data['title']);
-         $desc = htmlspecialchars($data['desc']);
-         $date = date("d.m.Y");
-         $mysqli->query("INSERT INTO photos VALUES ('', '$date')");
+         echo $photos[$value][$key];
 
-         $result = $mysqli->query("SELECT id FROM photos ORDER BY id DESC LIMIT 0,1");
-         $row = $result->fetch_array(MYSQLI_ASSOC);
-         $id = $row['id'];
+         $name = $photo['name'];
+			$size = $photo['size'];
+         $tmpName = $photo['tmp_name'];
+         $count = count($name);
 
-         $this->saveFile($photo, $id);
+          for($i = 0; $i < $count; $i++ ) {
+            
+            if ($this->validateForm($photo, $i)) {
 
-         $this->alert = 'Zdjęcie zostało dodane';
-         $this->alertType = 1;       
+               $date = date("d.m.Y");
+               $mysqli->query("INSERT INTO photos VALUES ('', '$date')");
+
+               $result = $mysqli->query("SELECT id FROM photos ORDER BY id DESC LIMIT 0,1");
+               $row = $result->fetch_array(MYSQLI_ASSOC);
+
+               $this->saveFile($tmpName[$i], $row['id']);
+
+               $j++;
+
+            }
+            
+         }
 
       }
+
+      if($j > 0) {
+
+         $this->alert = 'Dodano zdjęcia w ilości ' . $j . ' sztuk.';
+         $this->alertType = 1; 
+
+      }    
       
       displayAlert($this->alertType, $this->alert);
 
@@ -59,33 +78,33 @@ class Photos {
    private function saveFile($file, $id) {
 
       $uploads_dir = 'photos/';      
-      $tmp_name = $file['photo']['tmp_name'];
+      $tmp_name = $file;
       $name = $id.'.jpg';
       move_uploaded_file($tmp_name, $uploads_dir . $name);
       chmod($uploads_dir . $name, 0644);
 
    }
 
-   private function validateForm($photo) {      
+   private function validateForm($photo, $i) {     
 
-      if(!empty($photo['photo']['name'])) {   
+      if(!empty($photo['name'][$i])) {   
          
-         if($photo['photo']['size'] <= 4194304) {
+         if($photo['size'][$i] < 4194304) {
 
-            if($photo['photo']['type'] == 'image/jpeg') {
+            if($photo['type'][$i] == 'image/jpeg') {
 
                return true;
 
             } else {
 
-               $this->alert = 'Plik musi być obrazkiem w formacie jpeg';
+               $this->alert = 'Plik ' . $photo['name'][$i] . ' musi być obrazkiem w formacie jpeg';
                $this->alertType = 0;
                
             }
 
          } else {
 
-            $this->alert = 'Plik nie może przekraczać rozmiaru 4MB.';
+            $this->alert = 'Plik ' . $photo['name'][$i] . ' nie może przekraczać rozmiaru 4MB.';
             $this->alertType = 0;
 
          }

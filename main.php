@@ -1,14 +1,14 @@
    <h1>Galeria zdjęć</h1>
    <?php
+
    if($_POST['add'] == 1) $photo->addPhoto($_FILES);
    ?>
       <a href="index.php?page=delete"><button class="add">Usuń zdjęcie</button></a>
-      <form enctype="multipart/form-data" action="index.php" method="POST">
+      <form id="form" enctype="multipart/form-data" action="index.php" method="POST">
             <input type="hidden" name="add" value="1">
-            <input type="file" class="add" name="photo" accept="image/jpeg" required onchange="form.submit()">
-            <br><span style="font-size: 12px">Plik z rozszerzeniem .jpg. Max rozmiar 4MB</span>
-      </form>
-
+            <input id="image" type="file" class="add" name="photo[]" accept="image/jpeg" required onchange="form.submit()" multiple>
+            <br><span style="font-size: 12px">Max 20 Plików z rozszerzeniem .jpg. Max rozmiar 4MB</span>
+      </form>      
       <div class="wrapper">   
 <?php
 

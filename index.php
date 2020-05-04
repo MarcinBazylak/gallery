@@ -37,5 +37,15 @@ $photo = new Photos;
       'showImageNumberLabel': false
     });
    </script>
+   <script>
+   $("#image").on("change", function() {
+    if ($("#image")[0].files.length > 20) {
+        alert("Maksymalnie 20 zdjęć");
+    } else {
+        $("#form").submit();
+    }
+   });
+   </script>
+
 </body>
 </html>
