@@ -14,6 +14,15 @@ class Photos {
 
    }
 
+   public function getUploadedPhotos($q) {
+
+      global $mysqli;
+
+      $result = $mysqli->query("SELECT * FROM photos ORDER BY id DESC LIMIT 0,$q");
+      return $result;
+
+   }
+
    public function delPhoto($id) {
 
       global $mysqli;
@@ -67,11 +76,12 @@ class Photos {
       if($j > 0) {
 
          $this->alert = 'Dodano zdjęcia w ilości ' . $j . ' sztuk.';
-         $this->alertType = 1; 
+         $this->alertType = 1;
 
       }    
       
       displayAlert($this->alertType, $this->alert);
+      return $j;
 
    }
 

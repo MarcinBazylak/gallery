@@ -1,12 +1,13 @@
    <h1>Galeria zdjęć</h1>
+   <a href="index.php"><button class="add">Strona główna</button></a><br><br>
+   Kliknij na zdjęcie aby je usunąć.
 
 <?php
 if(!empty($_GET['id'])) {
    $photo->delPhoto($_GET['id']);
 }
 ?>
-      <a href="index.php"><button class="add">Strona główna</button></a><br><br>
-      Kliknij na zdjęcie aby je usunąć.
+
       <div class="wrapper">   
 <?php
 

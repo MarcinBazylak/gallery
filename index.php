@@ -1,5 +1,4 @@
 <?php
-header("Content-Type: text/html; charset=utf-8");
 
 include 'autoload.php';
 
@@ -18,6 +17,7 @@ $photo = new Photos;
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Galeria zdjęć</title>
    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
    <script src="lightbox/dist/js/lightbox.js"></script>
 </head>
 <body>
@@ -41,7 +41,7 @@ $photo = new Photos;
    $("#image").on("change", function() {
     if ($("#image")[0].files.length > 20) {
         alert("Maksymalnie 20 zdjęć");
-    } else {
+    } else if ($("#image")[0].files.length > 0) {
         $("#form").submit();
     }
    });

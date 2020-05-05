@@ -143,6 +143,28 @@ img.delete:hover {
    border-color:red; 
 }
 
+.progress {
+   margin-top: 20px;
+   margin-bottom: 30px;
+   background-color: grey;
+   position:relative;
+   width:410px;
+   border: 0;
+   padding: 0;
+}
+
+.bar {
+   background-color: orangered;
+   width:0%;
+   height:5px;
+}
+
+.percent {
+   position: absolute;
+   text-align: center;
+   display:inline-block;
+}
+
 @media only screen and (max-width:960px) {
 
 h1 {
